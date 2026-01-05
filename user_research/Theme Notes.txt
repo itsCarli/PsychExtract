@@ -1,0 +1,43 @@
+Difficulty extracting emotional meaning from text: Working with emotionally dense text is cognitively demanding even at student level.
+
+Strong perceived value in transcription + analysis features: Users favour a **pipeline approach** (transcription → analysis → reflection), reinforcing the decision to prioritise OCR as foundational.
+
+Low resistance but emerging ethical/security awareness: While students are generally open to such tools, data privacy and security are early considerations — particularly relevant if extended to professional contexts.
+
+Students as a feasible but limited proxy user group: This supports the use of students as proxy users, while also highlighting limitations for real clinical validation.
+
+# Functional Requirements (Derived)
+
+**FR1: Handwriting-to-text conversion (OCR)**
+
+Users expect scanned or handwritten material to be converted into readable digital text.
+
+**FR2: Emotion analysis support**
+
+Users value automated identification of emotional language to support understanding and reflection.
+
+**FR3: Key theme highlighting**
+
+Users want recurring themes or salient concepts surfaced from long-form text.
+
+**FR4 (Optional): Audio read-back**
+
+One participant expressed interest in having text read aloud, suggesting potential accessibility benefits.
+
+# Non-Functional / Design Requirements
+
+**NFR1: Data security and privacy**
+
+Concerns around security indicate that user data should be handled carefully, even in a prototype context.
+
+**NFR2: Clarity of scope and limitations**
+
+Users did not expect clinical accuracy, reinforcing the need to clearly position the system as a support tool.
+
+**NFR3: Low barrier to use**
+
+The lack of reported concerns suggests the system should remain simple and non-intrusive.
+
+# Notes
+
+User requirements were gathered via an informal survey of psychology students (undergraduate and honours level), used as a proxy user group. Despite the small sample size, responses revealed consistent challenges in extracting emotional meaning from text and strong perceived value in features such as OCR, emotion analysis, and theme highlighting. Security concerns were minimal but present, suggesting the importance of ethical framing and data handling, particularly for future extension to psychotherapists. These findings informed the prioritisation of OCR as a foundational component and reinforced the system’s positioning as a learning and reflective support tool rather than a clinical system.

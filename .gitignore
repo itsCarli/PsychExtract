@@ -1,0 +1,19 @@
+# --- Data (never commit raw data) ---
+data/
+
+# --- Experimental files ---
+docs/Demo Files/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Python ---
+__pycache__/
+*.pyc
+
+# --- Environment / secrets ---
+.env
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db

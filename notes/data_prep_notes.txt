@@ -1,0 +1,66 @@
+## Data Sources and Early Data Collection
+
+Initial testing of the PsychExtract prototype utilised handwritten and scanned text samples derived from informal, volunteer-provided material. These samples were intentionally varied in format, handwriting style, and content length to explore the feasibility of optical character recognition (OCR) as a foundational component of the system.
+
+Several early samples consisted of **long-form text**, including multi-page reflective or narrative-style writing. These were selected to approximate realistic use cases where users may work with extended notes or written reflections.
+
+However, this approach introduced substantial variability and complexity at an early prototyping stage, making it difficult to isolate whether OCR performance issues stemmed from:
+
+- handwriting variability,
+- image quality,
+- text density and length, or
+- model limitations.
+
+---
+
+## Observed Limitations in Early OCR Evaluation
+
+During initial experimentation, the OCR prototype demonstrated reduced reliability when applied to longer handwritten documents. Errors accumulated across pages, and transcription quality became increasingly difficult to assess consistently.
+
+This revealed two key limitations:
+
+1. **Evaluation ambiguity**: Long documents made it harder to determine whether recognition errors were systemic or incidental.
+2. **Prototype overreach**: Testing extended texts exceeded the scope appropriate for an early-stage proof-of-concept.
+
+These observations indicated that the prototype was being evaluated under conditions that were too complex for its current level of maturity.
+
+---
+
+## Data Synthesis and Refinement Strategy
+
+In response, the data preparation strategy was refined to better support controlled evaluation.
+
+Rather than relying on long-form handwritten documents, future OCR testing will focus on **shorter, synthesised text samples**. These samples will:
+
+- consist of brief paragraphs or excerpts,
+- represent emotionally relevant language aligned with the system’s goals,
+- allow clearer comparison between input text and OCR output.
+
+This shift enables more precise assessment of transcription accuracy while maintaining relevance to the intended application domain.
+
+Importantly, this refinement does not reduce realism but instead reflects an **iterative prototyping approach**, where system components are validated incrementally before being applied to more complex data.
+
+---
+
+## Rationale for Using Shorter Text Samples
+
+Using shorter text segments offers several advantages at this stage of development:
+
+- clearer identification of OCR strengths and failure modes,
+- improved comparability across samples,
+- reduced noise during evaluation,
+- better alignment with early user requirement findings, which emphasised usability and clarity.
+
+This approach allows the OCR component to be evaluated in isolation before reintegration into longer pipelines involving emotion analysis and theme extraction.
+
+---
+
+## Forward-Looking Data Preparation Plan
+
+Going forward, OCR evaluation will proceed using:
+
+- synthesised handwritten samples created from concise text passages,
+- controlled variation in handwriting style and layout,
+- systematic comparison between ground truth text and OCR output.
+
+Once baseline performance is established on shorter inputs, the system may later be re-tested on longer documents as part of future work.
