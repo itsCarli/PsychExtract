@@ -1,4 +1,8 @@
-# --- Data (never commit raw data) ---
+# --- Virtual environments ---
+project_files/venv/
+.env/
+
+# --- Data ---
 data/
 
 # --- Experimental files ---
