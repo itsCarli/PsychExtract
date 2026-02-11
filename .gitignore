@@ -1,5 +1,5 @@
 # --- Virtual environments ---
-project_files/venv/
+psychextract_venv/
 .env/
 
 # --- Data ---
@@ -21,3 +21,6 @@ __pycache__/
 # --- OS junk ---
 .DS_Store
 Thumbs.db
+
+# --- Version control ---
+.python-version
