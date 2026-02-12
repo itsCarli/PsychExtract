@@ -30,7 +30,3 @@ class TestOCRModule(unittest.TestCase):
     # assert result is string
     print(result)
     self.assertIsInstance(result, str)
-
-if __name__ == '__main__':
-  unittest.main()
-    
