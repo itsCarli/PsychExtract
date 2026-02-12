@@ -1,5 +1,3 @@
-# ! pip install yake spacy
-# ! python -m spacy download en_core_web_sm
 import yake 
 import spacy
 
@@ -70,6 +68,27 @@ def is_valid_noun_phrase(phrase: str) -> bool:
     return False
   return tokens[-1].pos_ in {"NOUN", "PROPN"}
 
+def normalize_phrase_case(phrase: str) -> str:
+  """
+  Normalizes the case of a phrase by converting non-proper nouns to lowercase while keeping proper nouns unchanged.
+
+  :param phrase: The input phrase to normalize.
+  :type phrase: str
+  :return: The normalized phrase with proper nouns unchanged and others in lowercase.
+  :rtype: str
+  """
+  nlp = get_nlp()
+  doc = nlp(phrase)
+  normalized = ""
+  for token in doc:
+    if token.pos_ == "PROPN":
+      # keep original casing
+      normalized += token.text_with_ws
+    else:
+      # lowercase everything else, preserve original spacing
+      normalized += token.text.lower() + token.whitespace_
+  return normalized.strip()
+
 def select_best_noun_phrases(keywords: list) -> list:
   """
   Selects the best noun phrases from a list of keywords based on their head noun lemmas.
@@ -87,8 +106,8 @@ def select_best_noun_phrases(keywords: list) -> list:
     if not head:
       continue
     if head not in concepts:
-      concepts[head] = phrase
-
+      concepts[head] = normalize_phrase_case(phrase)
+  
   return [v for v in concepts.values()]
 
 def extract_and_select_keywords(text: str) -> list:
@@ -102,5 +121,4 @@ def extract_and_select_keywords(text: str) -> list:
   """
   yake_extractor = get_yake_extractor()
   keywords = extract_keywords(text, yake_extractor)
-  selected_concepts = select_best_noun_phrases(keywords)
-  return selected_concepts
+  return select_best_noun_phrases(keywords)

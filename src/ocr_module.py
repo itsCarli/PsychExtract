@@ -1,6 +1,3 @@
-# python.exe -m pip install --upgrade pip
-# pip install numpy transformers torch torchvision pillow opencv-python
-
 import numpy as np
 
 from pathlib import Path
@@ -46,8 +43,7 @@ def preprocess_image(img_path: str, upscale=2.0) -> None:
                     interpolation=cv2.INTER_CUBIC)
     
   # Convert back to PIL Image
-  pil_img = Image.fromarray(bw)
-  return pil_img
+  return Image.fromarray(bw)
     
 def load_qwen():
   qwen_model_id = "Qwen/Qwen2.5-VL-7B-Instruct"
@@ -101,7 +97,9 @@ def extract_text_from_image(image: Image.Image,
   return None
 
 def load_preprocess_and_extract(image_path: str):
-  qwen_model, processor = load_qwen()
   preprocessed_image = preprocess_image(image_path)
-  extracted_text = extract_text_from_image(preprocessed_image, processor, qwen_model)
-  return extracted_text
+  return extract_text_from_image(preprocessed_image, processor, qwen_model)
+
+if __name__ != "__main__":
+  # Load Qwen model and processor once at module level
+  qwen_model, processor = load_qwen()

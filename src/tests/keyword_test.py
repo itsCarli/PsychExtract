@@ -6,7 +6,8 @@ from keyword_module import (
   is_valid_noun_phrase, 
   select_best_noun_phrases, 
   extract_and_select_keywords,
-  get_nlp
+  get_nlp,
+  normalize_phrase_case
   )
 
 class TestKeywordModule(unittest.TestCase):
@@ -41,3 +42,7 @@ class TestKeywordModule(unittest.TestCase):
     concepts = extract_and_select_keywords(text)
     # ensure "day" is in the string of a list
     self.assertTrue(any("day" in concept for concept in concepts))
+
+  def test_normalize_phrase_case(self):
+    self.assertEqual(normalize_phrase_case("Beautiful Day"), "beautiful day")
+    self.assertEqual(normalize_phrase_case("Today I could"), "today i could")

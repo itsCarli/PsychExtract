@@ -66,13 +66,13 @@ def predict_emotions(text: str,
   labels = get_labels()
   # Only keep emotions above threshold
   detected = {label: float(prob) 
-              for label, prob in zip(labels, probs) 
-              if prob >= threshold}
+              for label, prob in zip(labels, probs)}
+              # if prob >= threshold}
 
   # If no emotions meet the threshold, return the one with the highest probability
-  if not detected:
-    max_idx = torch.argmax(probs).item()
-    detected = {labels[max_idx]: float(probs[max_idx])}
+  # if not detected:
+  #   max_idx = torch.argmax(probs).item()
+  #   detected = {labels[max_idx]: float(probs[max_idx])}
   return detected
 
 def load_and_predict_emotions(text: str) -> dict:
@@ -87,6 +87,4 @@ def load_and_predict_emotions(text: str) -> dict:
   # Load emotion model and tokenizer
   model, tokenizer = load_emotion_model()
   # Predict emotions from the extracted text
-  emotions = predict_emotions(text, model, tokenizer)
-  
-  return emotions
+  return predict_emotions(text, model, tokenizer)
