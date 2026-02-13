@@ -5,28 +5,33 @@ class TestIntegration(unittest.TestCase):
   @classmethod
   def setUpClass(cls):
     # Run the full pipeline once for all tests
-    cls.result = run_psychextract("C:\\Users\\carli\\OneDrive\\UoL\\FP\\Deliverables\\PsychExtract\\data\\OCR\\raw_handwritten\\text0_a.png")
+    cls.result = run_psychextract("example_io\\text1_a.png", "example_io\\output.wav")
 
   def test_ocr(self):
     ocr_detected_text = self.result[0]
-    print("OCR Detected text:", ocr_detected_text)
+    # print("OCR Detected text:", ocr_detected_text)
     self.assertIsInstance(ocr_detected_text, str)
   
   def test_emotion_prediction(self):
     emotions = self.result[1]
-    print("Detected emotions:", emotions)
+    # print("Detected emotions:", emotions)
     self.assertIsInstance(emotions, dict)
     self.assertIn("joy", emotions)
     self.assertIsInstance(emotions["joy"], float)
 
   def test_keyword_extraction(self):
     keywords = self.result[2]
-    print("Detected keywords:", keywords)
+    # print("Detected keywords:", keywords)
     self.assertIsInstance(keywords, list)
     self.assertGreater(len(keywords), 0)
 
   def test_insight_generation(self):
     insight_sentences = self.result[3]
-    print("Insight sentences:", insight_sentences)
+    # print("Insight sentences:", insight_sentences)
     self.assertIsInstance(insight_sentences, str)
     self.assertGreater(len(insight_sentences), 0)
+  
+  def test_tts(self):
+    tts_result = self.result[4]
+    # print("TTS result: {tts_result}")
+    self.assertIsNotNone(tts_result)
