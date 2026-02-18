@@ -1,13 +1,9 @@
 # --- Virtual environments ---
-psychextract_venv/
-src_venv/
+*venv/
 .env/
 
 # --- Data ---
 data/
-
-# --- Experimental files ---
-docs/Demo Files/
 
 # --- Jupyter ---
 .ipynb_checkpoints/
