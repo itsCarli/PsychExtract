@@ -165,19 +165,21 @@ def detect_insights(text: str, emotions: dict[str, float]) -> list[str]:
     insights.append("Self-Relation and Appraisal")
   return insights
 
-def format_insight_sentences(emotions: dict, insights: list[dict]) -> str:
+def format_insight_sentences(emotions: dict, insights: list[dict], emotion_threshold: float = 0.3) -> str:
   """
-  Formats the detected insights and predicted emotions into coherent sentences based on predefined templates.
+  Formats the generated insight sentences into a coherent summary that combines the detected insight categories and the predicted emotions.
   
   :param emotions: A dictionary of predicted emotions with their corresponding intensity scores, used to determine which insights are relevant.
   :type emotions: dict
   :param insights: A list of dictionaries, each containing an insight category and a generated sentence that provides a personalized interpretation of the emotional content related to the detected themes.
   :type insights: list[dict]
+  :param emotion_threshold: A threshold value to filter which emotions are considered significant for generating insights.
+  :type emotion_threshold: float
   :return: A formatted string that combines the detected insight categories and the generated sentences based on the templates, providing a personalized interpretation of the emotional content related to the detected themes.
   :rtype: str
   """
   # Format the detected emotions into a coherent sentence
-  emotion_list = [emotion for emotion, score in emotions.items() if score >= 0.3]
+  emotion_list = [emotion for emotion, score in emotions.items() if score >= emotion_threshold]
   emotions_text = format_list_into_string(emotion_list)
   emotion_themes = f"Emotions of {emotions_text} are detected. "
   # Format the detected insight categories into a coherent sentence
@@ -193,9 +195,9 @@ def format_insight_sentences(emotions: dict, insights: list[dict]) -> str:
   # Combine everything
   return emotion_themes + insight_themes + texts
 
-def generate_insight_sentences(text: str, emotions: dict[str, float], keywords: list) -> str:
+def generate_insight_sentences(text: str, emotions: dict[str, float], keywords: list, emotion_threshold: float = 0.3) -> str:
   """
-  Generates personalized insight sentences based on the detected insights, predicted emotions, and identified themes in the text.
+  Generates personalized insight sentences based on the detected themes in the text and the predicted emotions, using predefined templates for each insight category.
 
   :param text: The original text extracted from the image, used for linguistic analysis to generate insights.
   :type text: str
@@ -203,6 +205,8 @@ def generate_insight_sentences(text: str, emotions: dict[str, float], keywords: 
   :type emotions: dict[str, float]
   :param  keywords: A list of keywords representing themes in the text, used to personalize the insight sentences.
   :type keywords: list[str]
+  :param emotion_threshold: A threshold value to filter which emotions are considered significant for generating insights.
+  :type emotion_threshold: float
   :return: A formatted string that combines the detected insight categories and the generated sentences based on the templates, providing a personalized interpretation of the emotional content related to the detected themes.
   :rtype: str
   """
@@ -226,4 +230,4 @@ def generate_insight_sentences(text: str, emotions: dict[str, float], keywords: 
       "text": template.format(theme=keywords_text)
     })
 
-  return format_insight_sentences(emotions, outputs)
+  return format_insight_sentences(emotions, outputs, emotion_threshold)

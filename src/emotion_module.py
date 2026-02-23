@@ -52,27 +52,21 @@ def predict_emotions(text: str,
   model.to(device)
   model.eval()
 
-  # Tokenize and move to device
+  # tokenize and move to device
   inputs = tokenizer(text, 
                      return_tensors="pt", 
                      truncation=True, 
                      padding=True).to(device)
 
-  # Inference
+  # inference
   with torch.no_grad():
     logits = model(**inputs).logits
     probs = torch.sigmoid(logits)[0]  # shape: [num_labels]
 
   labels = get_labels()
-  # Only keep emotions above threshold
+  # only keep emotions above threshold
   detected = {label: float(prob) 
               for label, prob in zip(labels, probs)}
-              # if prob >= threshold}
-
-  # If no emotions meet the threshold, return the one with the highest probability
-  # if not detected:
-  #   max_idx = torch.argmax(probs).item()
-  #   detected = {labels[max_idx]: float(probs[max_idx])}
   return detected
 
 def load_and_predict_emotions(text: str) -> dict:
@@ -84,7 +78,7 @@ def load_and_predict_emotions(text: str) -> dict:
   :return: A dictionary of detected emotions and their probabilities.
   :rtype: dict
   """
-  # Load emotion model and tokenizer
+  # load emotion model and tokenizer
   model, tokenizer = load_emotion_model()
-  # Predict emotions from the extracted text
+  # predict emotions from the extracted text
   return predict_emotions(text, model, tokenizer)

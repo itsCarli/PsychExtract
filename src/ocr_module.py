@@ -96,7 +96,15 @@ def extract_text_from_image(image: Image.Image,
     print(f"Error processing: {e}\n")
   return None
 
-def load_preprocess_and_extract(image_path: str):
+def load_preprocess_and_extract(image_path: str) -> str:
+  """
+  Load an image, preprocess it, and extract text using Qwen-VL.
+  
+  :param image_path: Path to the input image file.
+  :type image_path: str
+  :return: The extracted text from the image.
+  :rtype: str
+  """
   preprocessed_image = preprocess_image(image_path)
   return extract_text_from_image(preprocessed_image, processor, qwen_model)
 
