@@ -67,7 +67,7 @@ if st.session_state.uploaded_file:
 
     # Emotion results
     st.subheader("Emotions Detected")
-    st.write({'anticipation': 0.22, 'joy': 0.43})
+    st.write({"anticipation": 0.22, "joy": 0.43})
 
     # 5. Linguistic markers results
     st.subheader("Linguistic Markers")

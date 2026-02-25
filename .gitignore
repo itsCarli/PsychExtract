@@ -5,6 +5,10 @@
 # --- Data ---
 data/
 
+# --- Docs ---
+docs/
+notes/
+
 # --- Jupyter ---
 .ipynb_checkpoints/
 
