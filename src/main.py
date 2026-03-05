@@ -1,10 +1,6 @@
 # main.py - main entry point for the PsychExtract prototype, orchestrating the full pipeline from OCR to TTS
 
-# python.exe -m pip install --upgrade pip
-# pip install numpy transformers torch accelerate torchvision pillow opencv-python yake spacy pyttsx3 streamlit gTTS
-# python -m spacy download en_core_web_sm
-
-# modules
+# import necessary libraries
 from ocr_module import preprocess_image_and_extract_text
 from emotion_module import predict_emotions
 from keyword_module import extract_and_select_keywords

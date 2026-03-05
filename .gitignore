@@ -1,27 +1,27 @@
-# --- Virtual environments ---
+# virtual environments
 *venv/
 .env/
 
-# --- Data ---
+# data
 data/
 
-# --- Docs ---
+# docs
 docs/
 notes/
 
-# --- Jupyter ---
+# jupyter
 .ipynb_checkpoints/
 
-# --- Python ---
+# python
 __pycache__/
 *.pyc
 
-# --- Environment / secrets ---
+# environment / secrets
 .env
 
-# --- OS junk ---
+# os junk
 .DS_Store
 Thumbs.db
 
-# --- Version control ---
+# version control
 .python-version
